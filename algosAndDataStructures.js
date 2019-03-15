@@ -258,9 +258,9 @@
 //     console.log(stair);
 //   }
 // }
-// console.log(steps(2));
-// console.log(steps(3));
-// console.log(steps(4));
+// steps(2);
+// steps(3);
+// steps(4);
 
 // // solution 2
 // function steps(n, row = 0, stair = '') {
@@ -270,11 +270,14 @@
 //   if (n === stair.length) {
 //     console.log(stair);
 //     return steps(n, row + 1);
-//   }
-
-//   const add = stair.length <= row ? '#' : ' ';
-//   steps(n, row, stair + add);
+// 	}
+// 	if (stair.length <= row) {
+// 		stair += "#"
+// 	} else {
+// 		stair += " ";
+// 	}
+// 	steps(n, row, stair);
 // }
-// console.log(steps(2));
-// console.log(steps(3));
-// console.log(steps(4));
+// steps(2);
+// steps(3);
+// steps(4);
