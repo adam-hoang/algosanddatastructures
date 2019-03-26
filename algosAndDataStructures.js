@@ -397,14 +397,64 @@
 
 // // FIBONACCI  //////////////////////////////////////////////////////////////////
 
-// solution 1
-function fib(n) {
-    const result = [0, 1];
-    for (let i = 2; i <= n; i++) {
-        const a = result[i - 1];
-        const b = result[i - 2];
+// // solution 1
+// function fib(n) {
+//     const result = [0, 1];
+//     for (let i = 2; i <= n; i++) {
+//         const a = result[i - 1];
+//         const b = result[i - 2];
 
-        result.push(a + b);
-    }
-    return result[n];
-}
+//         result.push(a + b);
+//     }
+//     return result[n];
+// }
+// console.log(fib(4));
+
+// // solution 2 recursive (very slow)
+// function slowFib(n) {
+//     if (n < 2) {
+//         return n;
+//     }
+//     return fib(n - 1) + fib(n - 2);
+// }
+// console.log(fib(4));
+
+// // solution 3 recursive w/ memoization
+// function memoize(fn) {
+//     const cache = {};
+//     return function (...args) {
+//         if (cache[args]) {
+//             return cache[args];
+//         }
+//         const result = fn.apply(this, args);
+//         cache[args] = result;
+//         return result;
+//     };
+// }
+// function slowFib(n) {
+//     if (n < 2) {
+//         return n;
+//     }
+//     return fib(n - 1) + fib(n - 2);
+// }
+// const fib = memoize(slowFib);
+// console.log(slowFib(4));
+
+// // solution 3 recursive w/ memoization
+// function memoize(n, memo) {
+//     if (memo[n]) {
+//         return memo[n];
+//     } else {
+//         if (n < 2) {
+//             return n;
+//         } else {
+//             memo[n] = memoize(n-1, memo) + memoize(n-2, memo);
+//         }
+//         return memo[n];
+//     }
+// }
+// function fib(n) {
+//     const memo = {};
+//     return memoize(n, memo);
+// }
+// console.log(fib(4));
