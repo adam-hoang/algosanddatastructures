@@ -242,7 +242,7 @@
 // console.log(capitalize('a lazy fox'));
 // console.log(capitalize('look, it is working!'));
 
-// // PRINTING STEPS  //////////////////////////////////////////////////////////////////
+// // STEPS //////////////////////////////////////////////////////////////////
 
 // // solution 1
 // function steps(n) {
@@ -281,3 +281,130 @@
 // steps(2);
 // steps(3);
 // steps(4);
+
+// // PYRAMIDS  //////////////////////////////////////////////////////////////////
+
+// // solution 1
+// function pyramid(n) {
+//     const midpoint = Math.floor((2 * n - 1) / 2);
+//     for (let row = 0; row < n; row++) {
+//         let level = '';
+//         for (let column = 0; column < 2 * n - 1; column++) {
+//             if (midpoint - row <= column && midpoint + row >= column) {
+//                 level += '#';
+//             } else {
+//                 level += ' ';
+//             }
+//         }
+//         console.log(level);
+//     }
+// }
+// pyramid(1);
+// pyramid(2);
+// pyramid(3);
+
+// // solution 2
+// function pyramid(n, row = 0, level = '') {
+//     if (row === n) {
+//       return;
+//     }
+//     if (level.length === 2 * n - 1) {
+//       console.log(level);
+//       return pyramid(n, row + 1);
+//     }
+//     const midpoint = Math.floor((2 * n - 1) / 2);
+//     let add;
+//     if (midpoint - row <= level.length && midpoint + row >= level.length) {
+//       add = '#';
+//     } else {
+//       add = ' ';
+//     }
+//     pyramid(n, row, level + add);
+//   }
+// pyramid(1);
+// pyramid(2);
+// pyramid(3);
+
+// // FINDING VOWELS  //////////////////////////////////////////////////////////////////
+
+// // solution 1
+// function vowels(str) {
+//   let count = 0;
+//   const checker = ['a', 'e', 'i', 'o', 'u'];
+//   for (let char of str.toLowerCase()) {
+//     if (checker.includes(char)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log(vowels('Hi there!'));
+// console.log(vowels('Why do you ask?'));
+// console.log(vowels('Why?'));
+
+// // solution 2
+// function vowels(str) {
+//     const matches = str.match(/[aeiou]/gi);
+//     return matches ? matches.length : 0;
+// }
+// console.log(vowels('Hi there!'));
+// console.log(vowels('Why do you ask?'));
+// console.log(vowels('Why?'));
+
+// // MATRIX SPIRAL  //////////////////////////////////////////////////////////////////
+
+// function matrix(n) {
+//     const results = [];
+//     for (let i = 0; i < n; i++) {
+//         results.push([]);
+//     }
+//     let counter = 1;
+//     let startColumn = 0;
+//     let endColumn = n - 1;
+//     let startRow = 0;
+//     let endRow = n - 1;
+//     while (startColumn <= endColumn && startRow <= endRow) {
+//         // Top row
+//         for (let i = startColumn; i <= endColumn; i++) {
+//             results[startRow][i] = counter;
+//             counter++;
+//         }
+//         startRow++;
+//         // Right column
+//         for (let i = startRow; i <= endRow; i++) {
+//             results[i][endColumn] = counter;
+//             counter++;
+//         }
+//         endColumn--;
+//         // Bottom row
+//         for (let i = endColumn; i >= startColumn; i--) {
+//             results[endRow][i] = counter;
+//             counter++;
+//         }
+//         endRow--;
+//         // start column
+//         for (let i = endRow; i >= startRow; i--) {
+//             results[i][startColumn] = counter;
+//             counter++;
+//         }
+//         startColumn++;
+//     }
+//     return results;
+// }
+// console.log(matrix(2));
+// console.log(matrix(3));
+// console.log(matrix(4));
+
+// // FIBONACCI  //////////////////////////////////////////////////////////////////
+
+// solution 1
+function fib(n) {
+    const result = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        const a = result[i - 1];
+        const b = result[i - 2];
+
+        result.push(a + b);
+    }
+    return result[n];
+}
