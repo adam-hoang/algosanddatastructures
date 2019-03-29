@@ -146,3 +146,55 @@ class LinkedList {
         previous.next = node;
     }
 }
+
+function midpoint(list) {
+    let slow = list.getFirst();
+    let fast = list.getFirst();
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+const list = new LinkedList();
+list.insertLast('a');
+list.insertLast('b');
+list.insertLast('c');
+console.log(midpoint(list).data);
+
+function circular(list) {
+    let slow = list.getFirst();
+    let fast = list.getFirst();
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+
+        if (slow === fast) {
+            return true;
+        }
+    }
+    return false;
+}
+const list2 = new LinkedList();
+const a = new Node('a');
+const b = new Node('b');
+const c = new Node('c');
+list2.head = a;
+a.next = b;
+b.next = c;
+c.next = b;
+console.log(circular(list2));
+
+function fromLast(list, n) {
+    let slow = list.getFirst();
+    let fast = list.getFirst();
+    while (n > 0) {
+        fast = fast.next;
+        n--;
+    }
+    while (fast.next) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+    return slow;
+}
